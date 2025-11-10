@@ -14,6 +14,7 @@ import {
   Avatar,
   useTheme,
   alpha,
+  Collapse,
 } from '@mui/material';
 import {
   Dashboard as DashboardIcon,
@@ -26,13 +27,17 @@ import {
   Work as EmployeesIcon,
   Settings as SettingsIcon,
   ChevronLeft as ChevronLeftIcon,
+  ExpandLess as ExpandLessIcon,
+  ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 
 interface SidenavRoute {
   name: string;
-  path: string;
+  path?: string;
   icon: React.ReactNode;
   badge?: number;
+  isSection?: boolean;
+  children?: SidenavRoute[];
 }
 
 interface SidenavProps {
@@ -83,6 +88,53 @@ const routes: SidenavRoute[] = [
     icon: <InvoicesIcon />,
   },
   {
+    name: 'Mantenedores',
+    isSection: true,
+    icon: <SettingsIcon />,
+    children: [
+      {
+        name: 'Ingredientes Activos',
+        path: '/active-ingredients',
+        icon: <SettingsIcon />,
+      },
+      {
+        name: 'Tipos de Dosificación',
+        path: '/dosage-types',
+        icon: <SettingsIcon />,
+      },
+      {
+        name: 'Formulaciones',
+        path: '/formulations',
+        icon: <SettingsIcon />,
+      },
+      {
+        name: 'Unidades de Medida',
+        path: '/measurement-units',
+        icon: <SettingsIcon />,
+      },
+      {
+        name: 'Plagas',
+        path: '/pests',
+        icon: <SettingsIcon />,
+      },
+      {
+        name: 'Tipos de Servicio',
+        path: '/service-types',
+        icon: <SettingsIcon />,
+      },
+      {
+        name: 'Tipos de Usuario',
+        path: '/user-types',
+        icon: <SettingsIcon />,
+      },
+      {
+        name: 'Estados de Visita',
+        path: '/visit-statuses',
+        icon: <SettingsIcon />,
+      },
+    ],
+  },
+  {
     name: 'Configuración',
     path: '/settings',
     icon: <SettingsIcon />,
@@ -94,6 +146,15 @@ const drawerWidth = 280;
 export const Sidenav: React.FC<SidenavProps> = ({ open, onClose, isDesktop = false }) => {
   const theme = useTheme();
   const location = useLocation();
+  const [expandedSections, setExpandedSections] = React.useState<string[]>(['Mantenedores']);
+
+  const toggleSection = (sectionName: string) => {
+    setExpandedSections(prev =>
+      prev.includes(sectionName)
+        ? prev.filter(name => name !== sectionName)
+        : [...prev, sectionName]
+    );
+  };
 
   const drawerContent = (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -141,11 +202,99 @@ export const Sidenav: React.FC<SidenavProps> = ({ open, onClose, isDesktop = fal
         {routes.map((route) => {
           const isActive = location.pathname === route.path;
           
+          if (route.isSection && route.children) {
+            const isExpanded = expandedSections.includes(route.name);
+            return (
+              <Box key={route.name}>
+                <ListItem disablePadding sx={{ mb: 0.5 }}>
+                  <ListItemButton
+                    onClick={() => toggleSection(route.name)}
+                    sx={{
+                      mx: 1,
+                      borderRadius: 2,
+                      minHeight: 48,
+                      background: isExpanded
+                        ? alpha(theme.palette.primary.main, 0.1)
+                        : 'transparent',
+                      color: isExpanded ? theme.palette.primary.main : 'text.primary',
+                      '&:hover': {
+                        background: alpha(theme.palette.primary.main, 0.08),
+                      },
+                      transition: 'all 0.2s ease',
+                      borderLeft: isExpanded ? `3px solid ${theme.palette.primary.main}` : '3px solid transparent',
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        color: isExpanded ? theme.palette.primary.main : 'inherit',
+                        minWidth: 40,
+                      }}
+                    >
+                      {route.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={route.name}
+                      primaryTypographyProps={{
+                        fontSize: '0.9rem',
+                        fontWeight: isExpanded ? 600 : 400,
+                      }}
+                    />
+                    {isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                  </ListItemButton>
+                </ListItem>
+                <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {route.children.map((child) => (
+                      <ListItem key={child.path} disablePadding sx={{ mb: 0.3 }}>
+                        <ListItemButton
+                          component={NavLink}
+                          to={child.path || '#'}
+                          onClick={!isDesktop ? onClose : undefined}
+                          sx={{
+                            mx: 2,
+                            pl: 2,
+                            borderRadius: 2,
+                            minHeight: 40,
+                            background: isActive
+                              ? alpha(theme.palette.primary.main, 0.1)
+                              : 'transparent',
+                            color: isActive ? theme.palette.primary.main : 'text.primary',
+                            '&:hover': {
+                              background: alpha(theme.palette.primary.main, 0.08),
+                            },
+                            transition: 'all 0.2s ease',
+                            borderLeft: isActive ? `3px solid ${theme.palette.primary.main}` : '3px solid transparent',
+                          }}
+                        >
+                          <ListItemIcon
+                            sx={{
+                              color: isActive ? theme.palette.primary.main : 'inherit',
+                              minWidth: 32,
+                            }}
+                          >
+                            {child.icon}
+                          </ListItemIcon>
+                          <ListItemText
+                            primary={child.name}
+                            primaryTypographyProps={{
+                              fontSize: '0.85rem',
+                              fontWeight: isActive ? 600 : 400,
+                            }}
+                          />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              </Box>
+            );
+          }
+          
           return (
             <ListItem key={route.path} disablePadding sx={{ mb: 0.5 }}>
               <ListItemButton
                 component={NavLink}
-                to={route.path}
+                to={route.path || '#'}
                 onClick={!isDesktop ? onClose : undefined}
                 sx={{
                   mx: 1,
