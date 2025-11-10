@@ -1,0 +1,153 @@
+/* VehiclesPage Styles */
+.vehicles-page-container {
+  padding: 24px;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto; /* Permitir scroll vertical */
+  min-height: 100vh; /* Asegurar altura mínima */
+}
+
+/* Evitar scroll horizontal en tablas */
+.vehicles-table-container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Asegurar que todos los elementos no excedan el ancho */
+.vehicles-page-container * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Para contenido que realmente necesita scroll horizontal (como tablas anchas) */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vehicles-page-title {
+  font-size: 2rem;
+  color: #1976d2;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.vehicles-page-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* Table custom styles */
+.MuiTableContainer-root {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  overflow-x: auto !important;
+  max-width: 100% !important;
+}
+
+.MuiTable-root {
+  min-width: 650px !important;
+  max-width: 100% !important;
+}
+
+.MuiTableHead-root .MuiTableCell-root {
+  font-weight: 600 !important;
+  color: #1976d2 !important;
+  background-color: #f8f9fa !important;
+}
+
+.MuiTableRow-root:hover {
+  background-color: rgba(25, 118, 210, 0.04) !important;
+}
+
+/* Button styles */
+.create-vehicle-button {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+  color: white !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  text-transform: none !important;
+  box-shadow: 0 2px 4px rgba(25, 118, 210, 0.2) !important;
+}
+
+.create-vehicle-button:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%) !important;
+  box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3) !important;
+}
+
+/* Action buttons */
+.edit-button {
+  color: #1976d2 !important;
+  background-color: rgba(25, 118, 210, 0.1) !important;
+}
+
+.edit-button:hover {
+  background-color: rgba(25, 118, 210, 0.2) !important;
+}
+
+.delete-button {
+  color: #f44336 !important;
+  background-color: rgba(244, 67, 54, 0.1) !important;
+}
+
+.delete-button:hover {
+  background-color: rgba(244, 67, 54, 0.2) !important;
+}
+
+.toggle-button {
+  color: #ff9800 !important;
+  background-color: rgba(255, 152, 0, 0.1) !important;
+}
+
+.toggle-button:hover {
+  background-color: rgba(255, 152, 0, 0.2) !important;
+}
+
+/* Status chip styles */
+.status-available {
+  background-color: #38c172 !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.status-in_maintenance {
+  background-color: #ff9800 !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.status-in_use {
+  background-color: #2196f3 !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.status-inactive {
+  background-color: #f44336 !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+/* Dialog styles */
+.MuiDialog-paper {
+  border-radius: 12px !important;
+}
+
+.MuiDialogTitle-root {
+  background-color: #f8f9fa !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  padding: 1.5rem !important;
+}
+
+.MuiDialogContent-root {
+  padding: 1.5rem !important;
+}
+
+.MuiDialogActions-root {
+  padding: 1rem 1.5rem !important;
+  border-top: 1px solid #e0e0e0 !important;
+}

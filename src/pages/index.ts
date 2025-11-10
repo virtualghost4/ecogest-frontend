@@ -1,0 +1,9 @@
+export { default as HomePage } from './HomePage';
+export { default as VehicleTypes } from './VehicleTypes';
+export { default as VehiclesPage } from './VehiclesPage';
+export { default as UsersPage } from './UsersPage';
+export { default as SettingsPage } from './SettingsPage';
+export { default as CertificatesPage } from './CertificatesPage';
+export { default as ReportsPage } from './ReportsPage';
+export { default as InvoicesPage } from './InvoicesPage';
+export { default as EmployeesPage } from './EmployeesPage';

@@ -1,0 +1,14 @@
+.employees-page-container {
+  padding: 24px;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto; /* Permitir scroll vertical */
+  min-height: 100vh; /* Asegurar altura mínima */
+}
+
+/* Asegurar que todos los elementos no excedan el ancho */
+.employees-page-container * {
+  max-width: 100%;
+  box-sizing: border-box;
+}

@@ -1,0 +1,243 @@
+/* Estilos personalizados para la tabla de Tipos de Vehículos */
+
+/* Contenedor principal */
+.vehicle-types-container {
+  padding: 2rem 0;
+}
+
+/* Header con título y acciones */
+.vehicle-types-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.vehicle-types-title-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vehicle-types-icon {
+  font-size: 3rem !important;
+  color: #1976d2 !important;
+}
+
+.vehicle-types-title {
+  font-size: 2.5rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+  color: #1a1a1a;
+}
+
+.vehicle-types-subtitle {
+  color: #666 !important;
+  font-size: 1.1rem !important;
+}
+
+/* Botón de actualizar */
+.refresh-button {
+  min-width: 120px;
+  height: 40px;
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+/* Paper contenedor de la tabla */
+.table-paper {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  overflow: hidden !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+/* TableContainer */
+.table-container {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* Estilos de la tabla */
+.vehicle-types-table {
+  min-width: 800px;
+}
+
+/* TableHead */
+.vehicle-types-table .MuiTableHead-root {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.vehicle-types-table .MuiTableCell-head {
+  font-weight: 600 !important;
+  color: #333 !important;
+  font-size: 0.95rem !important;
+  padding: 16px !important;
+  background-color: #f8f9fa !important;
+  border-bottom: 2px solid #e0e0e0 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* TableBody */
+.vehicle-types-table .MuiTableBody-root .MuiTableRow-root {
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.vehicle-types-table .MuiTableBody-root .MuiTableRow-root:hover {
+  background-color: #f5f9ff !important;
+}
+
+.vehicle-types-table .MuiTableCell-body {
+  padding: 16px !important;
+  font-size: 0.95rem !important;
+  color: #555 !important;
+  vertical-align: middle !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+/* Celda del tipo de vehículo con icono */
+.vehicle-type-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vehicle-type-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1976d2, #1565c0);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+.vehicle-type-name {
+  font-weight: 500 !important;
+  color: #333 !important;
+  font-size: 1rem !important;
+}
+
+/* Chips para licencia y estado */
+.license-chip {
+  font-weight: 500 !important;
+  border-radius: 16px !important;
+  height: 28px !important;
+}
+
+.license-chip.MuiChip-colorPrimary {
+  background-color: #e3f2fd !important;
+  color: #1976d2 !important;
+  border-color: #1976d2 !important;
+}
+
+.status-chip {
+  font-weight: 500 !important;
+  border-radius: 16px !important;
+  height: 28px !important;
+}
+
+.status-chip.MuiChip-colorSuccess {
+  background-color: #e8f5e8 !important;
+  color: #2e7d32 !important;
+}
+
+.status-chip.MuiChip-colorDefault {
+  background-color: #f5f5f5 !important;
+  color: #666 !important;
+}
+
+/* Estado de carga */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  background-color: #fafafa;
+  border-radius: 12px;
+}
+
+.loading-spinner {
+  color: #1976d2 !important;
+}
+
+/* Alerta de error */
+.error-alert {
+  border-radius: 8px !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Scrollbar personalizado para la tabla */
+.table-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vehicle-types-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .vehicle-types-title-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .vehicle-types-icon {
+    font-size: 2rem !important;
+  }
+  
+  .vehicle-types-title {
+    font-size: 1.8rem !important;
+  }
+  
+  .table-container {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicle-types-table .MuiTableCell-head,
+  .vehicle-types-table .MuiTableCell-body {
+    padding: 12px 8px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .vehicle-type-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .license-chip,
+  .status-chip {
+    height: 24px !important;
+    font-size: 0.75rem !important;
+  }
+}

@@ -1,0 +1,278 @@
+/* Estilos personalizados para el Navbar */
+
+/* AppBar principal */
+.navbar-appbar {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+  box-shadow: 0 4px 20px rgba(25, 118, 210, 0.15) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1100 !important;
+}
+
+/* Toolbar */
+.navbar-toolbar {
+  min-height: 70px !important;
+  padding: 0 2rem !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Sección del logo/brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-1px);
+}
+
+.navbar-logo {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-title {
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-subtitle {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  margin-top: 2px !important;
+}
+
+/* Navegación central */
+.navbar-nav {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.navbar-nav-button {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px);
+  min-width: 120px;
+}
+
+.navbar-nav-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-nav-button.MuiButton-contained {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #1976d2 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.navbar-nav-button.MuiButton-contained:hover {
+  background: white !important;
+  color: #1565c0 !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Iconos en los botones */
+.navbar-button-icon {
+  font-size: 1.2rem !important;
+  margin-right: 0.5rem !important;
+}
+
+/* Sección de acciones derecha */
+.navbar-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Botón de conexión */
+.navbar-ping-button {
+  background: rgba(76, 175, 80, 0.2) !important;
+  border: 1px solid rgba(76, 175, 80, 0.3) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  border-radius: 20px !important;
+  min-width: auto !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar-ping-button:hover {
+  background: rgba(76, 175, 80, 0.3) !important;
+  color: white !important;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .navbar-toolbar {
+    padding: 0 1.5rem !important;
+  }
+  
+  .navbar-nav {
+    gap: 0.25rem;
+  }
+  
+  .navbar-nav-button {
+    padding: 0.6rem 1.2rem !important;
+    min-width: 100px;
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar-toolbar {
+    padding: 0 1rem !important;
+    min-height: 60px !important;
+  }
+  
+  .navbar-brand {
+    gap: 0.75rem;
+  }
+  
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+  
+  .navbar-title {
+    font-size: 1.3rem !important;
+  }
+  
+  .navbar-subtitle {
+    font-size: 0.8rem !important;
+  }
+  
+  .navbar-nav {
+    gap: 0.25rem;
+  }
+  
+  .navbar-nav-button {
+    padding: 0.5rem 1rem !important;
+    min-width: 90px;
+    font-size: 0.85rem !important;
+  }
+  
+  .navbar-button-icon {
+    font-size: 1rem !important;
+    margin-right: 0.25rem !important;
+  }
+  
+  .navbar-actions {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-toolbar {
+    flex-direction: column;
+    min-height: auto !important;
+    padding: 1rem !important;
+    gap: 1rem;
+  }
+  
+  .navbar-brand {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .navbar-nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-nav-button {
+    flex: 1;
+    min-width: 140px;
+  }
+  
+  .navbar-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-toolbar {
+    padding: 0.75rem !important;
+    gap: 0.75rem;
+  }
+  
+  .navbar-title {
+    font-size: 1.2rem !important;
+  }
+  
+  .navbar-subtitle {
+    display: none;
+  }
+  
+  .navbar-nav-button {
+    padding: 0.5rem 0.75rem !important;
+    min-width: 120px;
+    font-size: 0.8rem !important;
+  }
+  
+  .navbar-button-icon {
+    display: none;
+  }
+}
+
+/* Animaciones */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-appbar {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Estados activos */
+.navbar-nav-button.active {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto de scroll */
+.navbar-appbar.scrolled {
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.95) 0%, rgba(21, 101, 192, 0.95) 100%) !important;
+  backdrop-filter: blur(20px);
+}
