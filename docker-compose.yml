@@ -6,8 +6,6 @@ services:
     container_name: ecogest-frontend
     ports:
       - "3000:80"
-    environment:
-      - VITE_API_URL=http://ecogest-app:8080/api
     networks:
       - ecogest-backend_ecogest-network
     restart: unless-stopped

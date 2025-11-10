@@ -1,4 +1,4 @@
-import axiosInstance from '../config/axios';
+import axios from 'axios';
 
 export interface DosageType {
   id: number;
@@ -19,34 +19,34 @@ export interface UpdateDosageTypeRequest {
 }
 
 class DosageTypeService {
-  private readonly baseUrl = '/dosage-types';
+  private readonly baseUrl = '/api/dosage-types';
 
   async getAll(): Promise<DosageType[]> {
-    const response = await axiosInstance.get<DosageType[]>(this.baseUrl);
+    const response = await axios.get<DosageType[]>(this.baseUrl);
     return response.data;
   }
 
   async getById(id: number): Promise<DosageType> {
-    const response = await axiosInstance.get<DosageType>(`${this.baseUrl}/${id}`);
+    const response = await axios.get<DosageType>(`${this.baseUrl}/${id}`);
     return response.data;
   }
 
   async create(data: CreateDosageTypeRequest): Promise<DosageType> {
-    const response = await axiosInstance.post<DosageType>(this.baseUrl, data);
+    const response = await axios.post<DosageType>(this.baseUrl, data);
     return response.data;
   }
 
   async update(id: number, data: UpdateDosageTypeRequest): Promise<DosageType> {
-    const response = await axiosInstance.put<DosageType>(`${this.baseUrl}/${id}`, data);
+    const response = await axios.put<DosageType>(`${this.baseUrl}/${id}`, data);
     return response.data;
   }
 
   async delete(id: number): Promise<void> {
-    await axiosInstance.delete(`${this.baseUrl}/${id}`);
+    await axios.delete(`${this.baseUrl}/${id}`);
   }
 
   async toggleActive(id: number, active: boolean): Promise<DosageType> {
-    const response = await axiosInstance.patch<DosageType>(`${this.baseUrl}/${id}/toggle-active`, { active });
+    const response = await axios.patch<DosageType>(`${this.baseUrl}/${id}/toggle-active`, { active });
     return response.data;
   }
 }

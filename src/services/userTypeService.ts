@@ -1,4 +1,4 @@
-import axiosInstance from '../config/axios';
+import axios from 'axios';
 
 export interface UserType {
   id: number;
@@ -19,34 +19,34 @@ export interface UpdateUserTypeRequest {
 }
 
 class UserTypeService {
-  private readonly baseUrl = '/user-types';
+  private readonly baseUrl = '/api/user-types';
 
   async getAll(): Promise<UserType[]> {
-    const response = await axiosInstance.get<UserType[]>(this.baseUrl);
+    const response = await axios.get<UserType[]>(this.baseUrl);
     return response.data;
   }
 
   async getById(id: number): Promise<UserType> {
-    const response = await axiosInstance.get<UserType>(`${this.baseUrl}/${id}`);
+    const response = await axios.get<UserType>(`${this.baseUrl}/${id}`);
     return response.data;
   }
 
   async create(data: CreateUserTypeRequest): Promise<UserType> {
-    const response = await axiosInstance.post<UserType>(this.baseUrl, data);
+    const response = await axios.post<UserType>(this.baseUrl, data);
     return response.data;
   }
 
   async update(id: number, data: UpdateUserTypeRequest): Promise<UserType> {
-    const response = await axiosInstance.put<UserType>(`${this.baseUrl}/${id}`, data);
+    const response = await axios.put<UserType>(`${this.baseUrl}/${id}`, data);
     return response.data;
   }
 
   async delete(id: number): Promise<void> {
-    await axiosInstance.delete(`${this.baseUrl}/${id}`);
+    await axios.delete(`${this.baseUrl}/${id}`);
   }
 
   async toggleActive(id: number, active: boolean): Promise<UserType> {
-    const response = await axiosInstance.patch<UserType>(`${this.baseUrl}/${id}/toggle-active`, { active });
+    const response = await axios.patch<UserType>(`${this.baseUrl}/${id}/toggle-active`, { active });
     return response.data;
   }
 }
