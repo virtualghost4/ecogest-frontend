@@ -21,6 +21,10 @@ FROM nginx:alpine
 # Copiar configuración de nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
+# Copiar script de entrada
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 # Copiar build desde el stage anterior
 COPY --from=builder /app/dist /usr/share/nginx/html
 
@@ -32,4 +36,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD wget --quiet --tries=1 --spider http://localhost/ || exit 1
 
 # Comando por defecto
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/docker-entrypoint.sh"]

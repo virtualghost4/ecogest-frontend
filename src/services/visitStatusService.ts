@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../config/axios';
 
 export interface VisitStatus {
   id: number;
@@ -19,34 +19,34 @@ export interface UpdateVisitStatusRequest {
 }
 
 class VisitStatusService {
-  private readonly baseUrl = '/api/visit-statuses';
+  private readonly baseUrl = '/visit-statuses';
 
   async getAll(): Promise<VisitStatus[]> {
-    const response = await axios.get<VisitStatus[]>(this.baseUrl);
+    const response = await axiosInstance.get<VisitStatus[]>(this.baseUrl);
     return response.data;
   }
 
   async getById(id: number): Promise<VisitStatus> {
-    const response = await axios.get<VisitStatus>(`${this.baseUrl}/${id}`);
+    const response = await axiosInstance.get<VisitStatus>(`${this.baseUrl}/${id}`);
     return response.data;
   }
 
   async create(data: CreateVisitStatusRequest): Promise<VisitStatus> {
-    const response = await axios.post<VisitStatus>(this.baseUrl, data);
+    const response = await axiosInstance.post<VisitStatus>(this.baseUrl, data);
     return response.data;
   }
 
   async update(id: number, data: UpdateVisitStatusRequest): Promise<VisitStatus> {
-    const response = await axios.put<VisitStatus>(`${this.baseUrl}/${id}`, data);
+    const response = await axiosInstance.put<VisitStatus>(`${this.baseUrl}/${id}`, data);
     return response.data;
   }
 
   async delete(id: number): Promise<void> {
-    await axios.delete(`${this.baseUrl}/${id}`);
+    await axiosInstance.delete(`${this.baseUrl}/${id}`);
   }
 
   async toggleActive(id: number, active: boolean): Promise<VisitStatus> {
-    const response = await axios.patch<VisitStatus>(`${this.baseUrl}/${id}/toggle-active`, { active });
+    const response = await axiosInstance.patch<VisitStatus>(`${this.baseUrl}/${id}/toggle-active`, { active });
     return response.data;
   }
 }

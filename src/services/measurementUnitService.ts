@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../config/axios';
 
 export interface MeasurementUnit {
   id: number;
@@ -22,34 +22,34 @@ export interface UpdateMeasurementUnitRequest {
 }
 
 class MeasurementUnitService {
-  private readonly baseUrl = '/api/measurement-units';
+  private readonly baseUrl = '/measurement-units';
 
   async getAll(): Promise<MeasurementUnit[]> {
-    const response = await axios.get<MeasurementUnit[]>(this.baseUrl);
+    const response = await axiosInstance.get<MeasurementUnit[]>(this.baseUrl);
     return response.data;
   }
 
   async getById(id: number): Promise<MeasurementUnit> {
-    const response = await axios.get<MeasurementUnit>(`${this.baseUrl}/${id}`);
+    const response = await axiosInstance.get<MeasurementUnit>(`${this.baseUrl}/${id}`);
     return response.data;
   }
 
   async create(data: CreateMeasurementUnitRequest): Promise<MeasurementUnit> {
-    const response = await axios.post<MeasurementUnit>(this.baseUrl, data);
+    const response = await axiosInstance.post<MeasurementUnit>(this.baseUrl, data);
     return response.data;
   }
 
   async update(id: number, data: UpdateMeasurementUnitRequest): Promise<MeasurementUnit> {
-    const response = await axios.put<MeasurementUnit>(`${this.baseUrl}/${id}`, data);
+    const response = await axiosInstance.put<MeasurementUnit>(`${this.baseUrl}/${id}`, data);
     return response.data;
   }
 
   async delete(id: number): Promise<void> {
-    await axios.delete(`${this.baseUrl}/${id}`);
+    await axiosInstance.delete(`${this.baseUrl}/${id}`);
   }
 
   async toggleActive(id: number, active: boolean): Promise<MeasurementUnit> {
-    const response = await axios.patch<MeasurementUnit>(`${this.baseUrl}/${id}/toggle-active`, { active });
+    const response = await axiosInstance.patch<MeasurementUnit>(`${this.baseUrl}/${id}/toggle-active`, { active });
     return response.data;
   }
 }

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../config/axios';
 
 export interface ActiveIngredient {
   id: number;
@@ -19,34 +19,34 @@ export interface UpdateActiveIngredientRequest {
 }
 
 class ActiveIngredientService {
-  private readonly baseUrl = '/api/active-ingredients';
+  private readonly baseUrl = '/active-ingredients';
 
   async getAll(): Promise<ActiveIngredient[]> {
-    const response = await axios.get<ActiveIngredient[]>(this.baseUrl);
+    const response = await axiosInstance.get<ActiveIngredient[]>(this.baseUrl);
     return response.data;
   }
 
   async getById(id: number): Promise<ActiveIngredient> {
-    const response = await axios.get<ActiveIngredient>(`${this.baseUrl}/${id}`);
+    const response = await axiosInstance.get<ActiveIngredient>(`${this.baseUrl}/${id}`);
     return response.data;
   }
 
   async create(data: CreateActiveIngredientRequest): Promise<ActiveIngredient> {
-    const response = await axios.post<ActiveIngredient>(this.baseUrl, data);
+    const response = await axiosInstance.post<ActiveIngredient>(this.baseUrl, data);
     return response.data;
   }
 
   async update(id: number, data: UpdateActiveIngredientRequest): Promise<ActiveIngredient> {
-    const response = await axios.put<ActiveIngredient>(`${this.baseUrl}/${id}`, data);
+    const response = await axiosInstance.put<ActiveIngredient>(`${this.baseUrl}/${id}`, data);
     return response.data;
   }
 
   async delete(id: number): Promise<void> {
-    await axios.delete(`${this.baseUrl}/${id}`);
+    await axiosInstance.delete(`${this.baseUrl}/${id}`);
   }
 
   async toggleActive(id: number, active: boolean): Promise<ActiveIngredient> {
-    const response = await axios.patch<ActiveIngredient>(`${this.baseUrl}/${id}/toggle-active`, { active });
+    const response = await axiosInstance.patch<ActiveIngredient>(`${this.baseUrl}/${id}/toggle-active`, { active });
     return response.data;
   }
 }
