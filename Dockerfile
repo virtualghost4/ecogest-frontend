@@ -24,8 +24,15 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Copiar build desde el stage anterior
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Exponer puerto
-EXPOSE 80
+# Generar certificado SSL autofirmado
+RUN mkdir -p /etc/nginx/ssl && \
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /etc/nginx/ssl/nginx.key \
+    -out /etc/nginx/ssl/nginx.crt \
+    -subj "/C=CL/ST=Santiago/L=Santiago/O=EcoGest/CN=localhost"
+
+# Exponer puertos
+EXPOSE 80 443
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
