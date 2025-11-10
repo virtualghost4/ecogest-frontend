@@ -1,14 +1,16 @@
+version: '3.8'
+
 services:
   frontend:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: ecogest-frontend
+    restart: unless-stopped
     ports:
       - "3000:80"
     networks:
-      - ecogest-backend_ecogest-network
-    restart: unless-stopped
+      - ecogest-network
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
       interval: 30s
@@ -17,6 +19,6 @@ services:
       start_period: 40s
 
 networks:
-  ecogest-backend_ecogest-network:
+  ecogest-network:
     driver: bridge
     external: true
