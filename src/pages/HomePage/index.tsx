@@ -18,6 +18,7 @@ import {
   Warning as WarningIcon,
 } from '@mui/icons-material';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 import './styles.css';
 
 interface DashboardStats {
@@ -65,8 +66,8 @@ const HomePage: React.FC = () => {
         
         // Cargar datos reales desde las APIs
         const [usersResponse, vehiclesResponse] = await Promise.all([
-          axios.get('http://localhost:8080/api/users'),
-          axios.get('http://localhost:8080/api/vehicles'),
+          axios.get(`${API_BASE_URL}/users`),
+          axios.get(`${API_BASE_URL}/vehicles`),
         ]);
 
         const users = usersResponse.data;

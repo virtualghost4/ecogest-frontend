@@ -26,6 +26,7 @@ import {
   Edit as EditIcon,
   Delete as DeleteIcon,
 } from '@mui/icons-material';
+import { API_BASE_URL } from '../../config/api';
 import './styles.css';
 
 interface User {
@@ -52,7 +53,7 @@ const UsersPage: React.FC = () => {
         setLoading(true);
         setError(null);
         
-        const response = await axios.get('http://localhost:8080/api/users');
+        const response = await axios.get(`${API_BASE_URL}/users`);
         setUsers(response.data);
       } catch (err) {
         console.error('Error fetching users:', err);
