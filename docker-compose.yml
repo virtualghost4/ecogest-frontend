@@ -10,7 +10,7 @@ services:
     ports:
       - "3000:80"
     environment:
-      - VITE_API_URL=http://169.197.86.188:8080/api
+      - VITE_API_URL=http://ecogest-app:8080/api
     networks:
       - ecogest-network
     healthcheck:
@@ -23,4 +23,3 @@ services:
 networks:
   ecogest-network:
     driver: bridge
-    external: true
