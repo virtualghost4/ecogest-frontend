@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 export interface UserType {
   id: number;
@@ -19,7 +20,7 @@ export interface UpdateUserTypeRequest {
 }
 
 class UserTypeService {
-  private readonly baseUrl = '/api/user-types';
+  private readonly baseUrl = `${API_BASE_URL}/user-types`;
 
   async getAll(): Promise<UserType[]> {
     const response = await axios.get<UserType[]>(this.baseUrl);

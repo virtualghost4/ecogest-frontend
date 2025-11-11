@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 export interface ActiveIngredient {
   id: number;
@@ -19,7 +20,7 @@ export interface UpdateActiveIngredientRequest {
 }
 
 class ActiveIngredientService {
-  private readonly baseUrl = '/api/active-ingredients';
+  private readonly baseUrl = `${API_BASE_URL}/active-ingredients`;
 
   async getAll(): Promise<ActiveIngredient[]> {
     const response = await axios.get<ActiveIngredient[]>(this.baseUrl);

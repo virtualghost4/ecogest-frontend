@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 export interface DosageType {
   id: number;
@@ -19,7 +20,7 @@ export interface UpdateDosageTypeRequest {
 }
 
 class DosageTypeService {
-  private readonly baseUrl = '/api/dosage-types';
+  private readonly baseUrl = `${API_BASE_URL}/dosage-types`;
 
   async getAll(): Promise<DosageType[]> {
     const response = await axios.get<DosageType[]>(this.baseUrl);

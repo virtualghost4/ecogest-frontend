@@ -1,5 +1,6 @@
 import axios from 'axios';
 import type { Vehicle } from '../types/vehicle';
+import { API_BASE_URL } from '../config/api';
 
 export interface CreateVehicleRequest {
   licensePlate: string;
@@ -30,7 +31,7 @@ export interface UpdateVehicleRequest {
 }
 
 class VehicleService {
-  private readonly baseUrl = 'http://localhost:8080/api/vehicles';
+  private readonly baseUrl = `${API_BASE_URL}/vehicles`;
 
   // Obtener todos los vehículos
   async getAll(): Promise<Vehicle[]> {

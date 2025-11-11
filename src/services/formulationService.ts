@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 export interface Formulation {
   id: number;
@@ -19,7 +20,7 @@ export interface UpdateFormulationRequest {
 }
 
 class FormulationService {
-  private readonly baseUrl = '/api/formulations';
+  private readonly baseUrl = `${API_BASE_URL}/formulations`;
 
   async getAll(): Promise<Formulation[]> {
     const response = await axios.get<Formulation[]>(this.baseUrl);

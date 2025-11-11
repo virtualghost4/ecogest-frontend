@@ -1,5 +1,6 @@
 import axios from 'axios';
 import type { VehicleType } from '../hooks/useVehicleTypes';
+import { API_BASE_URL } from '../config/api';
 
 export interface CreateVehicleTypeRequest {
   name: string;
@@ -15,7 +16,7 @@ export interface UpdateVehicleTypeRequest {
 }
 
 class VehicleTypeService {
-  private readonly baseUrl = '/api/vehicle-types';
+  private readonly baseUrl = `${API_BASE_URL}/vehicle-types`;
 
   // Obtener todos los tipos de vehículos
   async getAll(): Promise<VehicleType[]> {

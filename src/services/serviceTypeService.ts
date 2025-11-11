@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 export interface ServiceType {
   id: number;
@@ -19,7 +20,7 @@ export interface UpdateServiceTypeRequest {
 }
 
 class ServiceTypeService {
-  private readonly baseUrl = '/api/service-types';
+  private readonly baseUrl = `${API_BASE_URL}/service-types`;
 
   async getAll(): Promise<ServiceType[]> {
     const response = await axios.get<ServiceType[]>(this.baseUrl);

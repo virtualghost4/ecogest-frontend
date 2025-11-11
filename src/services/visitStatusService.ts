@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 export interface VisitStatus {
   id: number;
@@ -19,7 +20,7 @@ export interface UpdateVisitStatusRequest {
 }
 
 class VisitStatusService {
-  private readonly baseUrl = '/api/visit-statuses';
+  private readonly baseUrl = `${API_BASE_URL}/visit-statuses`;
 
   async getAll(): Promise<VisitStatus[]> {
     const response = await axios.get<VisitStatus[]>(this.baseUrl);

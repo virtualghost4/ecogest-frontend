@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 export interface MeasurementUnit {
   id: number;
@@ -22,7 +23,7 @@ export interface UpdateMeasurementUnitRequest {
 }
 
 class MeasurementUnitService {
-  private readonly baseUrl = '/api/measurement-units';
+  private readonly baseUrl = `${API_BASE_URL}/measurement-units`;
 
   async getAll(): Promise<MeasurementUnit[]> {
     const response = await axios.get<MeasurementUnit[]>(this.baseUrl);

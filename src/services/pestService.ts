@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 export interface Pest {
   id: number;
@@ -19,7 +20,7 @@ export interface UpdatePestRequest {
 }
 
 class PestService {
-  private readonly baseUrl = '/api/pests';
+  private readonly baseUrl = `${API_BASE_URL}/pests`;
 
   async getAll(): Promise<Pest[]> {
     const response = await axios.get<Pest[]>(this.baseUrl);
