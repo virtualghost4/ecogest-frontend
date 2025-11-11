@@ -33,15 +33,9 @@ export interface UpdateVehicleRequest {
 class VehicleService {
   private readonly baseUrl = `${API_BASE_URL}/vehicles`;
 
-  constructor() {
-    console.log('[VehicleService] Initialized with baseUrl:', this.baseUrl);
-  }
-
   // Obtener todos los vehículos
   async getAll(): Promise<Vehicle[]> {
-    console.log('[VehicleService.getAll] Fetching from:', this.baseUrl);
     const response = await axios.get<Vehicle[]>(this.baseUrl);
-    console.log('[VehicleService.getAll] Response:', response.status, response.data?.length, 'items');
     return response.data;
   }
 

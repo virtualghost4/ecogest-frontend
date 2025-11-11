@@ -20,4 +20,5 @@ services:
 
 networks:
   ecogest-network:
-    driver: bridge
+    external: true
+    name: ecogest-network
