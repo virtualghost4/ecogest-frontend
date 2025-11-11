@@ -5,6 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ecogest-frontend</title>
+    <script>
+      // Inject API URL at runtime from environment variable
+      // This allows dynamic configuration without rebuilding
+      (function() {
+        const apiUrl = window.location.origin + '/api';
+        window.__API_BASE_URL__ = apiUrl;
+        console.log('Runtime API URL:', apiUrl);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
